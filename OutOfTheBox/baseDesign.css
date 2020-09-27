@@ -1,12 +1,23 @@
 @charset "ISO-8859-1";
 
 body{
-	background-color: lightblue;
+	background-image: url("images/LivingRoom.jpg");
+	background-position: center; 
+  	background-repeat: no-repeat; 
+  	background-size: cover; 
+}
+
+h1{
+	color: grey;
 }
 
 .container{
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	margin-right: 10%;
+	margin-left: 10%;
+}
 
+.loginForms{
+	flex: 1;
+	border: 2px solid rgba(211,211,211, .7);
 }
