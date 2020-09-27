@@ -5,7 +5,7 @@
  * Date: 9/23/2020
  * Purpose: Class will be used to implement security methods throughout the site
  * Note: This is currently a placeholder file. Will be implementing
- * DBO approach in Milestone 2.
+ * n-layered approach in Milestone 2.
  *  */
 
 require_once 'header.php';

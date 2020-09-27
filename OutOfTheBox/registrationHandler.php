@@ -6,7 +6,7 @@
  * Date: 9/24/2020
  * Purpose: file will handle new registration requests
  * Note: This is currently a placeholder file. Will be implementing
- * DBO approach in Milestone 2.
+ * n-layered approach in Milestone 2.
  *  */
 
 

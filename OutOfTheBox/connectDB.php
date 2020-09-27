@@ -5,7 +5,7 @@
  * Date: 9/24/2020
  * Purpose: file will connect to DB
  * Note: This is currently a placeholder file. Will be implementing
- * DBO approach in Milestone 2.
+ * n-layered approach in Milestone 2.
  *  */
 
 $host = "localhost";
