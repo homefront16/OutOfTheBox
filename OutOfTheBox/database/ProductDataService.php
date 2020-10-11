@@ -4,12 +4,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once 'ConnectDB.php';
-require_once '../businessService/Model/Users.php';
+require_once '../../autoLoader.php';
 
 class ProductDataService
 {
     function findByProductName($n){
+
         // Search by product name. Returns an array of products
         $db = new ConnectDB();
         

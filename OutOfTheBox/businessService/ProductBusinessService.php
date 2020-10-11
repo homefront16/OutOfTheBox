@@ -5,7 +5,7 @@ require_once '../../autoLoader.php';
 class ProductBusinessService
 {
     function findByProductName($name){
-        $service = new ProductBusinessService();
+        $service = new ProductDataService();
         return $service->findByProductName($name);
     }
 }
