@@ -11,8 +11,9 @@ class Address
     private $city;
     private $state;
     private $postalCode;
-    
-    function __contruct(int $id, int $addressType, int $isDefault, string $street, string $city, string $state, int $postalCode)
+    private $users_ID;
+
+    function __contruct(int $id, int $addressType, int $isDefault, string $street, string $city, string $state, int $postalCode, int $users_ID)
     {
         $this->id = $id;
         $this->addressType = $addressType;
@@ -21,6 +22,7 @@ class Address
         $this->city = $city;
         $this->state = $state;
         $this->postalCode = $postalCode;
+        $this->users_ID = $users_ID;
     }
     
     public function getId()
@@ -92,6 +94,16 @@ class Address
     public function setPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
+    }
+    
+    public function getUsers_ID()
+    {
+        return $this->users_ID;
+    }
+    
+    public function setUsers_ID($users_ID)
+    {
+        $this->users_ID = $users_ID;
     }
 
 
