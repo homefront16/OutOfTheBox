@@ -11,7 +11,7 @@
 $host = "localhost";
 $username = "root";
 $userPassword = "root";
-$databaseInUse = "commerceSite";
+$databaseInUse = "outofbox";
 
 $mysqli = new mysqli($host, $username, $userPassword, $databaseInUse);
 if ($mysqli->connect_errno) {

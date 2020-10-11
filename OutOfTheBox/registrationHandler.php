@@ -14,7 +14,6 @@ require_once 'header.php';
 require_once 'autoLoader.php';
 
 
-
 $newUsername = $_POST['username'];
 $newEmail = $_POST['email'];
 $newPassword = $_POST['password'];
