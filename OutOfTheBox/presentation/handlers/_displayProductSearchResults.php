@@ -5,6 +5,14 @@
 
 
 <head>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+  crossorigin="anonymous"></script>
+  
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 <style>
 #users {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -32,8 +40,9 @@
 </style>
 </head>
 
-<table id="users">
+<table id="users" class="display">
 
+<thead>
 <tr>
     <th>
     ID
@@ -52,7 +61,8 @@
     </th>
 
 </tr>
-
+</thead>
+<tbody>
 <?php 
 
 
@@ -74,3 +84,10 @@ for($x= 0; $x < count($users); $x++)
 ?>
 
 </table>
+</tbody>
+
+<script>
+$(document).ready( function () {
+    $('#users').DataTable();
+} );
+</script>
