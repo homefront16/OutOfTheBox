@@ -1,5 +1,4 @@
 <?php
-namespace businessService\Model;
 
 class Products
 {

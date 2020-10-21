@@ -1,5 +1,7 @@
 <?php
 
+
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -160,9 +162,57 @@ class UserDataService{
         $connection = $db->getConnection();
         $firstName = $person->getFirstName();
         $lastName = $person->getLastName();
+        $username = $person->getUsername();
+        $password = $person->getPassword();
+        $role = $person->getRole();
+        $email = $person->getEmail();
         
-        $stmt = $connection->prepare("UPDATE users SET FirstName = ?, LastName = ? FROM users WHERE ID = ? LIMIT 1");
-        $stmt->bind_param("ssi", $firstName, $lastName, $id);
+        $stmt = $connection->prepare("UPDATE users SET FirstName = ?, LastName = ?, 
+            username = ?, password = ?, Role = ?, email = ?  WHERE ID = ? LIMIT 1");
+        
+        if(!$stmt){
+            echo "Something wrong in the binding process. sql error?";
+            exit;
+        }
+        
+        $stmt->bind_param("ssssisi", $firstName, $lastName, $username, $password, $role, $email, $id);
+        
+        // Execute Query
+        $stmt->execute();
+        
+        // get results
+        if($stmt->affected_rows > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    function makeNew($person){
+        
+        // accepts a $person object. Inserts a new record into the USERS table.
+        $db = new ConnectDB();
+        
+        
+        $connection = $db->getConnection();
+        $firstName = $person->getFirstName();
+        $lastName = $person->getLastName();
+        $username = $person->getUsername();
+        $password = $person->getPassword();
+        $role = $person->getRole();
+        $email = $person->getEmail();
+        
+        
+        $stmt = $connection->prepare("INSERT INTO users (FirstName, LastName, username, password, Role, email) VALUES(?,?,?,?,?,?)");
+        
+        if(!$stmt){
+            echo "Something wrong in the binding process. sql error?";
+            exit;
+        }
+        
+        $stmt->bind_param("ssssis", $firstName, $lastName, $username, $password, $role, $email);
         
         // Execute Query
         $stmt->execute();
@@ -345,4 +395,5 @@ class UserDataService{
         return $users;
     }
 }
+
 ?>

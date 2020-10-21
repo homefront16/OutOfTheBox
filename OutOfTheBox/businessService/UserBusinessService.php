@@ -39,6 +39,11 @@ class UserBusinessService
         return $service->updateOne($id, $person);
     }
     
+    function makeNew($person){
+        $service = new UserDataService();
+        return $service->makeNew($person);
+    }
+    
     function wildCardSearchBefore($name){
         $service = new UserDataService();
         return $service->wildCardSearchBefore($name);

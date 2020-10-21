@@ -1,5 +1,5 @@
 <?php
-namespace businessService\Model;
+
 
 class Users
 {
