@@ -22,13 +22,10 @@ spl_autoload_register(function($class){
         
         if(is_readable($classFile)){
             if(require $d . '\\' . $class . ".php"){
-                echo "success: " . $classFile . "<br>";
                 
-               // break;
+               break;
             }
-            else {
-                echo "fail: " . $classFile . "<br>";
-            }
+           
         }
 
     }

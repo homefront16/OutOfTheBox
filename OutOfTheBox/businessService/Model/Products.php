@@ -6,14 +6,15 @@ class Products
     private $productName;
     private $description;
     private $price;
-    
-    
-    function __construct(int $id, string $productName, string $description, float $price)
+    private $imageURL;
+
+    function __construct(int $id, string $productName, string $description, float $price, String $imageURL)
     {
         $this->id = $id;
         $this->productName = $productName;
         $this->description = $description;
         $this->price = $price;
+        $this->imageURL = $imageURL;
     }
 
     public function getId()
@@ -54,6 +55,16 @@ class Products
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+    
+    public function getImageURL()
+    {
+        return $this->imageURL;
+    }
+    
+    public function setImageURL($imageURL)
+    {
+        $this->imageURL = $imageURL;
     }
 
     

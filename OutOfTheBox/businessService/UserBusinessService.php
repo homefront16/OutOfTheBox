@@ -4,6 +4,10 @@ require_once '../../autoLoader.php';
 
 class UserBusinessService
 {
+    function showAllUsers(){
+        $service = new UserDataService();
+        return $service->showAllUsers();
+    }
     function searchByFirstName($name){
         $service = new UserDataService();
         return $service->findByFirstName($name);

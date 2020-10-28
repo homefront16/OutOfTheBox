@@ -10,7 +10,16 @@ class Users
     private $password;
     private $role;
     private $email;
-    
+    /**
+     * 
+     * @param int $id
+     * @param string $firstName
+     * @param string $lastName
+     * @param string $username
+     * @param string $password
+     * @param int $role
+     * @param string $email
+     */
     function __construct(int $id, string $firstName, string $lastName, string $username, string $password, int $role, string $email)
     {
         $this->id = $id;

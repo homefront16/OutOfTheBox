@@ -9,6 +9,45 @@ error_reporting(E_ALL);
 require_once 'ConnectDB.php';
 
 class UserDataService{
+    
+    function showAllUsers(){
+        // Returns an array of persons. Includes everyone in the database
+        $db = new ConnectDB();
+        
+        $connection = $db->getConnection();
+        
+        $stmt = $connection->prepare("SELECT * FROM users");
+
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+        
+        if(!$result){
+            echo "assume the SQL statement has an error<br>";
+            return null;
+            exit;
+        }
+        
+        if($result->num_rows == 0){
+            return null;
+        }
+        else {
+            echo "I found " . $result->num_rows . " results!" . "<br>";
+        }
+        
+        $index = 0;
+        $users = array();
+        
+        while($row = $result->fetch_assoc())
+        {
+            $users[$index] = array($row["ID"], $row["FirstName"], $row["LastName"],
+                $row["username"], $row["password"], $row["Role"], $row["email"]);
+            
+            ++$index;
+            
+        }
+        return $users;
+    }
     function findByFirstName($n){
         // Returns an array of persons
         $db = new ConnectDB();
@@ -90,7 +129,7 @@ class UserDataService{
     }
     function findByID($id){
         
-        // $id is the number to search for, returns a single person array
+        // $id is the number to search for, returns a single person object.
         $db = new ConnectDB();
         
         $connection = $db->getConnection();
@@ -111,7 +150,7 @@ class UserDataService{
             return null;
         }
         else {
-            echo "I found " . $result->num_rows . " results!" . "<br>";
+
         }
         
         $index = 0;
@@ -121,11 +160,17 @@ class UserDataService{
         {
             $users[$index] = array($row["ID"], $row["FirstName"], $row["LastName"],
                 $row["username"], $row["password"], $row["Role"], $row["email"]);
-            
+
+
+
             ++$index;
-            
         }
-        return $users;
+  
+        
+        $p = new Users($users[0][0], $users[0][1], $users[0][2],
+            $users[0][3], $users[0][4], $users[0][5], $users[0][6]); 
+        
+            return $p;
         
     }
     
@@ -137,11 +182,20 @@ class UserDataService{
         $connection = $db->getConnection();
         
         $stmt = $connection->prepare("DELETE FROM users WHERE ID = ? LIMIT 1");
-        $stmt->bind_param("s", $id);
         
+        if(!$stmt){
+            echo "Something went wrong in the binding process. sql error?";
+            exit;
+        }
+
+        $stmt->bind_param("i", $id);
+        
+        echo $id;
         // Execute Query
         $stmt->execute();
-
+        echo "<pre>";
+        print_r($stmt);
+        echo "</pre>";
         // get results
         if($stmt->affected_rows > 0)
         {
@@ -149,6 +203,7 @@ class UserDataService{
         }
         else 
         {
+            echo "This statement returned false<br>";
             return false;
         }
     }
