@@ -1,7 +1,7 @@
 <?php
 
 
-
+//use businessService\Model\Users;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -9,16 +9,15 @@ error_reporting(E_ALL);
 
 require_once '../../autoLoader.php';
 require_once '../../header.php';
-require_once '../../businessService/Model/Users.php';
+//require_once '../../businessService/Model/Users.php';
 
 if(isset($_GET))
 {
-    $firstName = $_GET['FirstName'];
-    $lastName = $_GET['LastName'];
-    $username = $_GET['username'];
-    $password = $_GET['password'];
-    $role = $_GET['Role'];
-    $email = $_GET['email'];
+    $ID = $_GET['ID'];
+    $productName = $_GET['ProductName'];
+    $description = $_GET['Description'];
+    $price = $_GET['Price'];
+    $imageURL = $_GET['imageURL'];
 }
 
 else{
@@ -27,10 +26,10 @@ else{
 
 // send a new user object to the business service -> database service chain.
 
-$bs = new UserBusinessService();
-$user = new Users(0, $firstName, $lastName, $username, $password, $role, $email);
+$bs = new ProductBusinessService();
+$product = new Products($ID, $productName, $description, $price, $imageURL);
 
-if($bs->makeNew($user)){
+if($bs->updateOneProduct($ID, $product)){
     echo "Item inserted<br>";
 }
 else{

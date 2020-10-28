@@ -8,6 +8,15 @@ class ProductBusinessService
         $service = new ProductDataService();
         return $service->findByProductName($name);
     }
+    
+    function findProductByID($id){
+        $service = new ProductDataService();
+        return $service->findProductByID($id);
+    }
+    function updateOneProduct($id, $product){
+        $service = new ProductDataService();
+        return $service->updateOneProduct($id, $product);
+    }
 }
 
 ?>

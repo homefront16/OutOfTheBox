@@ -25,6 +25,12 @@
     padding: 8px;
 }
 
+#users img{
+width: 25%;
+height: 25%
+
+}
+
 #users tr:nth-child(even){background-color: #f2f2f2;}
 
 #users tr:hover {background-color: #ddd}
@@ -44,6 +50,9 @@
 
 <thead>
 <tr>
+	<th>
+    Edit
+    </th>
     <th>
     ID
     </th>
@@ -59,25 +68,29 @@
     <th>
     Price
     </th>
+    <th>
+    Photo
+    </th>
 
 </tr>
 </thead>
 <tbody>
 <?php 
 
-
 for($x= 0; $x < count($users); $x++)
 {
     echo "<tr>";
     // example of the array
     // $users[0]['FirstName'] = "John"
-    
-    echo "<td>" . $users[$x][0] ."</td>";
+    echo "<td><form action='../views/editProductForm.php'><input type='hidden' name='id' value=".$users[$x][0] ."><input type='submit' value='Edit'></form></td>";
+    echo "<td><a href='../views/showOneProduct.php?id=".$users[$x][0]. "'>".$users[$x][0]. "</a></td>";
+    //echo "<td>" . $users[$x][0] . "</td>";
     echo "<td>" . $users[$x][1] . "</td>";
     echo "<td>" . $users[$x][2] . "</td>";
     echo "<td>" . $users[$x][3] . "</td>";
-
-    
+    echo "<td>" . '<img src="../../images/'.$users[$x][4].'"/>' . "</td>";
+    //echo "<td>" . $users[$x][4] . "</td>";
+   
     echo "</tr>";
 }
 
