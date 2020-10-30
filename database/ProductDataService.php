@@ -180,5 +180,39 @@ class ProductDataService
             return false;
         }
     }
+    function addNewProduct($product){
+        // accepts a $person object. Inserts a new record into the USERS table.
+        $db = new ConnectDB();
+        
+        
+        $connection = $db->getConnection();
+        $productName = $product->getProductName();
+        $description = $product->getDescription();
+        $price = $product->getPrice();;
+        $imageURL = $product->getImageURL();
+        
+        
+        $stmt = $connection->prepare("INSERT INTO products (ProductName, Description, Price, imageURL) VALUES(?,?,?,?)");
+        
+        if(!$stmt){
+            echo "Something wrong in the binding process. sql error?";
+            exit;
+        }
+        
+        $stmt->bind_param("ssds", $productName, $description, $price, $imageURL);
+        
+        // Execute Query
+        $stmt->execute();
+        
+        // get results
+        if($stmt->affected_rows > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 

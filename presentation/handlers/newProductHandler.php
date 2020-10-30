@@ -13,7 +13,6 @@ require_once '../../header.php';
 
 if(isset($_GET))
 {
-    $ID = $_GET['ID'];
     $productName = $_GET['ProductName'];
     $description = $_GET['Description'];
     $price = $_GET['Price'];
@@ -27,15 +26,19 @@ else{
 // send a new user object to the business service -> database service chain.
 
 $bs = new ProductBusinessService();
-$product = new Products($ID, $productName, $description, $price, $imageURL);
+$product = new Products(0, $productName, $description, $price, $imageURL);
 
-if($bs->updateOneProduct($ID, $product)){
-    echo "Item inserted<br>";
+if($bs->addNewProduct($product)){
+    ?>
+    <div class="alert alert-success" role="alert">
+  	Product Succesfully Added!
+	</div>
+    <?php 
 }
 else{
     echo "Nothing inserted.";
 }
 
-echo "<a href='http://localhost/OutOfTheBox/home.php'>Return to Home Page</a>";
+echo "<a href='http://localhost/OutOfTheBox/presentation/handlers/ProductSearchHandler.php?name='>Return to Home Page</a>";
 
 ?>
