@@ -28,10 +28,7 @@ require_once '../../header.php';
     <div class="col-md-4 mb-3">
       <label for="validationCustomUsername">Username</label>
       <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend">@</span>
-        </div>
-        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+        <input type="text" class="form-control" id="validationCustomUsername" name="username" required>
         <div class="invalid-feedback">
           Please choose a username.
         </div>

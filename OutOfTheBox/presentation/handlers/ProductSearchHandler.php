@@ -19,8 +19,8 @@ $users = $bs->findByProductName($searchPhrase);
 
 //print_r($users);
 
- echo "<h2>Search Results</h2> <p>Here is what we found</p> ";
-
+echo "<h2>Search Results</h2> <p>Here is what we found</p><br> ";
+echo "If you would like to create a new product click " . "<a href='http://localhost/OutOfTheBox/presentation/views/newProductForm.php'>Here</a>";
 
  if($users){
     // We have results
