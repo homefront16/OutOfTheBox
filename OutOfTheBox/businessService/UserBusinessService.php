@@ -57,6 +57,11 @@ class UserBusinessService
         $service = new UserDataService();
         return $service->wildCardSearchAfter($name);
     }
+    
+    function userAuthenticate($username, $password){
+        $service = new UserDataService();
+        return $service->userAuthenticate($username, $password);
+    }
 }
 
 ?>

@@ -32,7 +32,7 @@ class UserDataService{
             return null;
         }
         else {
-            echo "I found " . $result->num_rows . " results!" . "<br>";
+
         }
         
         $index = 0;
@@ -189,13 +189,10 @@ class UserDataService{
         }
 
         $stmt->bind_param("i", $id);
-        
-        echo $id;
+
         // Execute Query
         $stmt->execute();
-        echo "<pre>";
-        print_r($stmt);
-        echo "</pre>";
+  
         // get results
         if($stmt->affected_rows > 0)
         {
@@ -203,7 +200,6 @@ class UserDataService{
         }
         else 
         {
-            echo "This statement returned false<br>";
             return false;
         }
     }
@@ -448,6 +444,38 @@ class UserDataService{
             
         }
         return $users;
+    }
+    function userAuthenticate($username, $password){
+        // $id is the number to search for, Returns a true for success or false for failure
+        $db = new ConnectDB();
+        
+        $connection = $db->getConnection();
+        
+        $stmt = $connection->prepare("SELECT username, password FROM users WHERE username = ? AND password = ?");
+        
+        if(!$stmt){
+            echo "Something went wrong in the binding process. sql error?";
+            exit;
+        }
+        
+        $stmt->bind_param("ss", $username, $password);
+        
+        // Execute Query
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        
+ 
+
+        // get results
+        if($result->num_rows > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 

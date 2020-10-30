@@ -1,7 +1,9 @@
 <?php
-
-require_once 'header.php';
-require_once 'autoLoader.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once '../../header.php';
+require_once '../../autoLoader.php';
 
 /*
  * Name: Raymond Popsie
@@ -10,8 +12,8 @@ require_once 'autoLoader.php';
  * Purpose: file will handle login requests
  *  */
 
-$attemptedLoginName = $_POST['username'];
-$attemtedPassword = $_POST['password'];
+$attemptedLoginName = $_GET['username'];
+$attemtedPassword = $_GET['password'];
 
 echo "You tried to login with " . $attemptedLoginName . "<br>" . $attemtedPassword . "<br>";
 
@@ -23,14 +25,18 @@ if ($loggedIn)
 {
     echo "Logged in success!";
     $_SESSION['principal'] = true;
-    $service->selectData();
-    include "loginSuccess.php";
+    $_SESSION['username'] = $attemptedLoginName;
+    $_SESSION['loggedin'] = true;
+    header("Location:http://localhost/OutOfTheBox/presentation/handlers/ProductSearchHandler.php?name=");
+  
     
 } 
 else
 {
     echo "login fail";
     $_SESSION['principal'] = false;
-    include "loginFailed.php";
+    $_SESSION['loggedin'] = false;
+    header("Location:http://localhost/OutOfTheBox/index.php");
+
 }
 ?>

@@ -17,6 +17,11 @@ class ProductBusinessService
         $service = new ProductDataService();
         return $service->updateOneProduct($id, $product);
     }
+    
+    function deleteProductByID($id){
+        $service = new ProductDataService();
+        return $service->deleteProductByID($id);
+    }
 }
 
 ?>

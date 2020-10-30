@@ -8,8 +8,9 @@
  * n-layered approach in Milestone 2.
  *  */
 
-require_once 'header.php';
-require_once 'connectDB.php';
+require_once '../../header.php';
+//require_once 'connectDB.php';
+require_once '../../autoLoader.php';
 
 class SecurityService
 {
@@ -28,10 +29,12 @@ class SecurityService
      Will be using SQL querys to confirm registered user names and passwords.  */
     public function authenticate()
     {
+        $bs = new UserBusinessService();
+       
         if ($this->password == "" || $this->username == "") {
             return false;
         }
-        if ($this->password == "secretpw" && $this->username == "ray") {
+        if ($bs->userAuthenticate($this->username, $this->password)) {
             return true;
         } else {
             return false;

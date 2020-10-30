@@ -150,5 +150,35 @@ class ProductDataService
         
         
     }
+    function deleteProductByID($id){
+        
+        
+        // $id is the number to search for, Returns a true for success or false for failure
+        $db = new ConnectDB();
+        
+        $connection = $db->getConnection();
+        
+        $stmt = $connection->prepare("DELETE FROM products WHERE ID = ? LIMIT 1");
+        
+        if(!$stmt){
+            echo "Something went wrong in the binding process. sql error?";
+            exit;
+        }
+        
+        $stmt->bind_param("i", $id);
+
+        // Execute Query
+        $stmt->execute();
+
+        // get results
+        if($stmt->affected_rows > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 
