@@ -36,6 +36,6 @@ else{
     echo "Nothing inserted.";
 }
 
-echo "<a href='/'>Return to Home Page</a>";
+echo "<a href='http://localhost/OutOfTheBox/home.php'>Return to Home Page</a>";
 
 ?>

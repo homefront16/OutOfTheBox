@@ -13,7 +13,7 @@ require_once '../../header.php';
 
 if(isset($_GET))
 {
-    $ID = $_GET['ID'];
+    $ID = $_GET['id'];
     $firstName = $_GET['FirstName'];
     $lastName = $_GET['LastName'];
     $username = $_GET['username'];
@@ -38,6 +38,6 @@ else{
     echo "Nothing inserted.";
 }
 
-echo "<a href='/'>Return to Home Page</a>";
+echo "<a href='http://localhost/OutOfTheBox/home.php'>Return to Home Page</a>";
 
 ?>

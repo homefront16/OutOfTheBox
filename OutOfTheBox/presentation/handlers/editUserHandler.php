@@ -13,7 +13,7 @@ require_once '../../header.php';
 
 if(isset($_GET))
 {
-    $ID = $_GET['ID'];
+    $ID = $_GET['id'];
     $firstName = $_GET['FirstName'];
     $lastName = $_GET['LastName'];
     $username = $_GET['username'];

@@ -27,7 +27,7 @@ if ($loggedIn)
     $_SESSION['principal'] = true;
     $_SESSION['username'] = $attemptedLoginName;
     $_SESSION['loggedin'] = true;
-    header("Location:http://localhost/OutOfTheBox/presentation/handlers/ProductSearchHandler.php?name=");
+    header("Location:http://localhost/OutOfTheBox/home.php");
   
     
 } 
