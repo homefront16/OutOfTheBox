@@ -54,6 +54,9 @@ height: 25%
     Edit
     </th>
     <th>
+    Delete
+    </th>
+    <th>
     ID
     </th>
     
@@ -83,6 +86,7 @@ for($x= 0; $x < count($users); $x++)
     // example of the array
     // $users[0]['FirstName'] = "John"
     echo "<td><form action='../views/editProductForm.php'><input type='hidden' name='id' value=".$users[$x][0] ."><input type='submit' value='Edit'></form></td>";
+    echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete this user?');\" href='deleteProductHandler.php?id=".$users[$x][0]."'>Delete</a></td>";
     echo "<td><a href='../views/showOneProduct.php?id=".$users[$x][0]. "'>".$users[$x][0]. "</a></td>";
     //echo "<td>" . $users[$x][0] . "</td>";
     echo "<td>" . $users[$x][1] . "</td>";

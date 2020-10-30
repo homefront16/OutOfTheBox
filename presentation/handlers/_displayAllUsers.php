@@ -94,7 +94,8 @@ for($x= 0; $x < count($users); $x++)
     // example of the array
     // $users[0]['FirstName'] = "John"
     echo "<td><form action='editUserForm.php'><input type='hidden' name='id' value=".$users[$x][0] ."><input type='submit' value='Edit'></form></td>";
-    echo "<td><form action='../handlers/deleteUser.php'><input type='hidden' name='id' value=".$users[$x][0] ."><input type='submit' value='Delete'></form></td>";
+    //echo "<td><form action='../handlers/deleteUser.php'><input type='hidden' name='id' value=".$users[$x][0] ."><input type='submit' value='Delete'></form></td>";
+    echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete this user?');\" href='../handlers/deleteUser.php?id=".$users[$x][0]."'>Delete</a></td>";
     echo "<td><a href='../views/showOneUser.php?id=".$users[$x][0]. "'>".$users[$x][0]. "</a></td>";
     echo "<td>" . $users[$x][1] . "</td>";
     echo "<td>" . $users[$x][2] . "</td>";

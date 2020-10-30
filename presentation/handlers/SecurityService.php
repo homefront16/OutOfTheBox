@@ -8,9 +8,9 @@
  * n-layered approach in Milestone 2.
  *  */
 
-require_once 'header.php';
+require_once '../../header.php';
 //require_once 'connectDB.php';
-require_once 'autoLoader.php';
+require_once '../../autoLoader.php';
 
 class SecurityService
 {

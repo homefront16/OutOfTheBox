@@ -4,14 +4,14 @@ require_once '../../autoLoader.php';
 
 $id = $_GET['id'];
 
-$bs = new UserBusinessService();
+$bs = new ProductBusinessService();
 
-$success = $bs->deleteItemByID($id);
+$success = $bs->deleteProductByID($id);
 
 if($success){
     ?>
     <div class="alert alert-success" role="alert">
-  	User Succesfully Deleted!
+  	Product Succesfully Deleted!
 	</div>
     <?php 
     

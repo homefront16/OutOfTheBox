@@ -14,16 +14,25 @@ require_once 'header.php';
 require_once 'autoLoader.php';
 
 
-$newUsername = $_POST['username'];
-$newEmail = $_POST['email'];
-$newPassword = $_POST['password'];
-$confirmPassword = $_POST['confirmPassword'];
+$firstName = $_POST['FirstName'];
+$lastName  = $_POST['LastName'];
+$username = $_POST['username'];
+$password = $_POST['password'];
+$role = $_POST['Role'];
+$email = $_POST['email'];
 
-if(!$newPassword == "" || !$confirmPassword == "") {
-    echo "Your new password is empty. Please try again";
-}
-if($newPassword == $confirmPassword){
-    
-}
+
+$bs = new UserBusinessService();
+$user = new Users(0, $firstName, $lastName, $username, $password, $role, $email);
+
+$bs->makeNew($user);
 
 ?>
+
+<div class="jumbotron">
+  <h1 class="display-4">Welcome <?php echo $firstName?></h1>
+  <p class="lead">Welcome to Out Of The Box. Get ready to look at unique products at crazy discounts!</p>
+  <hr class="my-4">
+  <p>We have new deals every day. Check out newest products and find your own unique piece!</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Check it out</a>
+</div>
