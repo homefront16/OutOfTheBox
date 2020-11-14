@@ -62,6 +62,11 @@ class UserBusinessService
         $service = new UserDataService();
         return $service->userAuthenticate($username, $password);
     }
+    
+    function findUserID($username, $password){
+        $service = new UserDataService();
+        return $service->findUserID($username, $password);
+    }
 }
 
 ?>

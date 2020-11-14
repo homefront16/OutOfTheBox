@@ -12,6 +12,8 @@ require_once '../../autoLoader.php';
  * Purpose: file will handle login requests
  *  */
 
+$userBS = new UserBusinessService();
+
 $attemptedLoginName = $_GET['username'];
 $attemtedPassword = $_GET['password'];
 
@@ -27,6 +29,9 @@ if ($loggedIn)
     $_SESSION['principal'] = true;
     $_SESSION['username'] = $attemptedLoginName;
     $_SESSION['loggedin'] = true;
+    $userID = $userBS->findUserID($attemptedLoginName, $attemtedPassword);
+    
+    $_SESSION['userid'] = $userID[0][0];
     header("Location:http://localhost/OutOfTheBox/home.php");
   
     

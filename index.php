@@ -36,18 +36,6 @@ require_once 'header.php';
 </div>
 </div>
 </div>
-<!-- <h1>People Search</h1>
-<form action = "presentation/handlers/PersonSearchHandler.php">
 
-Search for a person:<input type="text" name="name"></input><br>
-<input type="submit" value="search"></input>
-</form> -->
-
-<!-- <h1>Product Search</h1>
-<form action = "presentation/handlers/ProductSearchHandler.php">
-
-Search for a product:<input type="text" name="name"></input><br>
-<input type="submit" value="search"></input>
-</form> -->
 </body>
 </html>
