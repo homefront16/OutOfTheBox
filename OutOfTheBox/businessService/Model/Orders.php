@@ -7,15 +7,34 @@ class Orders
     private $date;
     private $users_ID;
     private $Addresses_ID;
+    private $totalPrice;
 
-    function __construct(int $id, $date, int $users_ID, int $Addresses_ID)
+
+
+    function __construct(int $id, $date, int $users_ID, int $Addresses_ID, $totalPrice)
     {
         $this->id = $id;
         $this->date = $date;
         $this->users_ID = $users_ID;
         $this->Addresses_ID = $Addresses_ID;
+        $this->totalPrice = $totalPrice;
     }
     
+    /**
+     * @return mixed
+     */
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
+    
+    /**
+     * @param mixed $totalPrice
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
+    }
     public function getId()
     {
         return $this->id;

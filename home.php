@@ -1,4 +1,7 @@
 <?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 require_once 'header.php';
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
@@ -6,6 +9,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 } else {
     header("Location:http://localhost/OutOfTheBox/index.php");
 }
+
+$theId = $_SESSION['userid'];
+
+
 ?>
 
 

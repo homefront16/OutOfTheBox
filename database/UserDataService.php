@@ -477,6 +477,53 @@ class UserDataService{
             return false;
         }
     }
+    function findUserID($username, $password){
+        // $id is the number to search for, Returns a true for success or false for failure
+        $db = new ConnectDB();
+        
+        $connection = $db->getConnection();
+        
+        $stmt = $connection->prepare("SELECT ID FROM users WHERE username = ? AND password = ? LIMIT 1");
+        
+        if(!$stmt){
+            echo "Something went wrong in the binding process. sql error?";
+            exit;
+        }
+        
+        $stmt->bind_param("ss", $username, $password);
+        
+        // Execute Query
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        echo "<pre>";
+        print_r($result);
+        echo "</pre>";
+        
+        
+        // get results
+    /*     if($result->num_rows > 0)
+        {
+            return $result;
+        }
+        else
+        {
+            echo "No results Found";
+        }
+     */
+        
+        $index = 0;
+        $users = array();
+        
+        while($row = $result->fetch_assoc())
+        {
+            $users[$index] = array($row["ID"]);
+            
+            ++$index;
+            
+        }
+        return $users;
+    }
 }
 
 ?>
