@@ -44,8 +44,6 @@ class OrderDataService
             exit;
         }
         
-        
-       // $order_id = $order->getId();
         $order_date = $order->getDate();
         $user_id = $order->getUsers_ID();
         $orderTotal = $order->getTotalPrice();
@@ -57,13 +55,10 @@ class OrderDataService
         $stmt->execute();
         
         if($stmt->affected_rows > 0){
-            //$connection->close();
             return $connection->insert_id;
         }
         else{
-           // $connection->close();
-            echo "nothing inserted into the database during newOrder.";
-            return false;
+            return -1;
         }
         
     }

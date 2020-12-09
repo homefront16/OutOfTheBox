@@ -43,6 +43,8 @@ class OrdersBusinessService
         if($newOrderID != -1 && $detailsOK != -1){
       
             $connection->commit();
+            // Clearing the cart
+            $_SESSION['cart'] = null;
             echo "Transaction Succesful";
         }
         

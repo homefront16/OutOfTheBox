@@ -73,12 +73,8 @@ echo "</tbody>";
 echo "</table>";
 echo "<h4>Total Amount: " . sprintf('$%01.2f', $c->getTotalPrice()) . "</h4><br>";
 
-// Clearing the cart
- foreach($c->getItems() as $productID => $quantity){
-   $c->updateQuantity($productID, 0);
-} 
 
-  ?>
+?>
   
     
     
