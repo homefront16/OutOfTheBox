@@ -3,6 +3,64 @@
 
 class OrderDataService
 {
+    function getOrdersBetweenDates($beginDate, $endDate){
+        // Returns an array of persons
+        $db = new ConnectDB();
+        
+        $connection = $db->getConnection();
+        $stmt = $connection->prepare("
+      SELECT orderdetails.Quantity,
+        orders.ID,
+        orders.date,
+        users.FirstName,
+        users.LastName,
+        addresses.Street,
+        addresses.City,
+        addresses.State
+        FROM orderdetails
+        JOIN orders ON orders.ID = orderdetails.orders_ID
+        JOIN users ON users.ID = orders.users_ID
+        JOIN addresses ON addresses.ID = orders.users_ID
+        WHERE orders.date BETWEEN ? AND ?
+        ORDER BY Quantity DESC");
+        
+        if(!$stmt){
+            echo "Something wrong in the binding process. sql error?";
+            exit;
+        }
+        
+        $stmt->bind_param("ss", $beginDate, $endDate);
+        
+        // execute statment
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+        
+        if(!$result){
+            echo "assume the SQL statement has an error<br>";
+            return null;
+            exit;
+        }
+        
+        if($result->num_rows == 0){
+            echo "No Results were found between those dates";
+        }
+        
+        
+        $index = 0;
+        $orders = array();
+        
+        while($row = $result->fetch_assoc())
+        {
+            $orders[$index] = array($row["ID"], $row["date"], $row["FirstName"],
+                $row["LastName"], $row["Street"], $row["City"], $row["State"]);
+            
+            ++$index;
+            
+        }
+        return $orders;
+    }
+    
     function addDetailsLine($orderDetails, $connection){
         // Create a new line in the order details table. 
         // Return the id number of the last item inserted.

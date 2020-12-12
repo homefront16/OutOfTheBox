@@ -9,15 +9,30 @@
       <li class="nav-item active">
         <a class="nav-link" href="http://localhost/OutOfTheBox/home.php">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Admin
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="http://localhost/OutOfTheBox/presentation/views/adminShowAllUsers.php">Show All Users</a>
-          <a class="dropdown-item" href="http://localhost/OutOfTheBox/presentation/handlers/ProductSearchHandler.php?name=">Show All Products</a>
-        </div>
-      </li>
+      
+      <?php if(isset($_SESSION['role'] )){
+          if($_SESSION['role'] ==1){
+              ?>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Admin
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="http://localhost/OutOfTheBox/presentation/views/adminShowAllUsers.php">Show All Users</a>
+              <a class="dropdown-item" href="http://localhost/OutOfTheBox/presentation/handlers/ProductSearchHandler.php?name=">Show All Products</a>
+              <a class="dropdown-item" href="http://localhost/OutOfTheBox/presentation/views/ordersReportCreator.php">Reports</a>
+              </div>
+              </li>
+           
+	<li class="nav-item active">
+        <a class="nav-link" href="http://localhost/OutOfTheBox/home.php"><?php echo $_SESSION['username']?> Logged In (ADMIN) <span class="sr-only">(current)</span></a>
+    </li>
+       <?php 
+              }
+          }?>
+          <li class="nav-item active">
+        <a class="nav-link" href="http://localhost/OutOfTheBox/presentation/handlers/logOut.php">Log Out <span class="sr-only">(current)</span></a>
+    </li>
     </ul>
     <form action="http://localhost/OutOfTheBox/presentation/handlers/ProductSearchHandler.php" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" name="name" aria-label="Search">

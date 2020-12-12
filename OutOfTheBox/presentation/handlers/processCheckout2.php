@@ -21,23 +21,7 @@ $order = new Orders(0, date('Y-m-d H:i:s'), $userID, 2, $total);
 $OrderBS = new OrdersBusinessService();
 $OrderBS->checkOut($order, $c);
 
-
-$connectDB = new ConnectDB();
-$connect = $connectDB->getConnection();
-
-$OrderBS = new OrdersBusinessService();
-$newOrder = $OrderBS->createNewOrder($order, $connect); 
-
-
-
-
-
-
-//$orderbs = new OrderBusinessService();
 $productbs = new ProductBusinessService();
- // Need to create a get all products method for Product Business Service
-
-
 
 echo "<h2>Transaction Complete</h2>";
 echo "<h3>Your Receipt</h3>";

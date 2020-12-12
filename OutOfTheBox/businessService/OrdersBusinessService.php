@@ -7,6 +7,11 @@ require_once '../../autoLoader.php';
 
 class OrdersBusinessService
 {
+    function getOrdersBetweenDates($beginDate, $endDate){
+        $dbService = new OrderDataService();
+        return $dbService->getOrdersBetweenDates($beginDate, $endDate);
+    }
+    
     function checkOut($order, $cart){
        
        

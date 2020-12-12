@@ -7,6 +7,11 @@ require_once '../../autoLoader.php';
 
 class OrdersBusinessService
 {
+    function getOrdersBetweenDates($beginDate, $endDate){
+        $dbService = new OrderDataService();
+        return $dbService->getOrdersBetweenDates($beginDate, $endDate);
+    }
+    
     function checkOut($order, $cart){
        
        
@@ -43,6 +48,8 @@ class OrdersBusinessService
         if($newOrderID != -1 && $detailsOK != -1){
       
             $connection->commit();
+            // Clearing the cart
+            $_SESSION['cart'] = null;
             echo "Transaction Succesful";
         }
         

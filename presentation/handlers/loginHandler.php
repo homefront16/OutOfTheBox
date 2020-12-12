@@ -29,9 +29,13 @@ if ($loggedIn)
     $_SESSION['principal'] = true;
     $_SESSION['username'] = $attemptedLoginName;
     $_SESSION['loggedin'] = true;
+    $_SESSION['role'] = 
     $userID = $userBS->findUserID($attemptedLoginName, $attemtedPassword);
-    
+    $userInformation = $userBS->findByID($userID[0][0]);
+   
     $_SESSION['userid'] = $userID[0][0];
+    $_SESSION['role'] = $userInformation->getRole();
+    
     header("Location:http://localhost/OutOfTheBox/home.php");
   
     
